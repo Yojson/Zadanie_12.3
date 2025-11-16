@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -32,6 +34,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.firstNameText.setText(currentUser.getFirstName());
         holder.lastNameText.setText(currentUser.getLastName());
         holder.avatarImage.setImageResource(currentUser.getAvatarId());
+
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = currentUser.getFirstName() + " " + currentUser.getLastName();
+                Toast.makeText(v.getContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Ta metoda zwraca liczbę elementów na liście.
